@@ -4,9 +4,6 @@ I wanted to have an easy way to interface with the accumulators and also have co
 use primitive types for performance. Right now the library only supports long/double options, but it can easily be extended to support the other numeric types.
 
 ##Sum
-
-Currently supports primitive longs and doubles
-
     LongAccumulator sum = new LongSumAccumulator();
     sum.accumulate(5L);
     sum.accumulate(6L);
@@ -16,3 +13,63 @@ Currently supports primitive longs and doubles
     sum.accumulate(5.0);
     sum.accumulate(6.1);
     sum.result(); //11.1
+
+##Mean
+    MeanAccumulator mean = new MeanAccumulator();
+    mean.accumulate(5L);
+    mean.accumulate(6L);
+    mean.result(); //5.5
+
+##Min
+    LongAccumulator min = new LongMinAccumulator();
+    min.accumulate(5L);
+    min.accumulate(6L);
+    min.result(); //5L
+
+    DoubleAccumulator min = new DoubleMinAccumulator();
+    min.accumulate(5.0);
+    min.accumulate(6.1);
+    min.result(); //5.0
+
+##Max
+    LongAccumulator max = new LongMaxAccumulator();
+    max.accumulate(5L);
+    max.accumulate(6L);
+    max.result(); //6L
+
+    DoubleAccumulator max = new DoubleMaxAccumulator();
+    max.accumulate(5.0);
+    max.accumulate(6.1);
+    max.result(); //6.1
+    
+##Median
+    MedianAccumulator<Long> median = new MedianAccumulator<Double>();
+    median.accumulate(5L);
+    median.accumulate(6L);
+    median.result(); //5.5
+
+    MedianAccumulator<Long> median = new MedianAccumulator<Double>();
+    median.accumulate(5.0);
+    median.accumulate(6.0);
+    median.accumulate(7.0);
+    median.result(); //6.0
+
+##Standard Deviation
+
+Calculated using pooled standard deviation: http://en.wikipedia.org/wiki/Pooled_variance
+
+    StdDevAccumulator stddev = new StdDevAccumulator();
+    stddev.accumulate(1.0, 3); //where 1.0 = a standard deviation, for a sample-size of 3 (s = 1.0, n = 3)
+    stddev.accumulate(1.29, 4);
+    stddev.accumulate(2.12, 2);
+    stddev.accumulate(2.07, 5);
+    stddev.accumulate(1.58, 5);
+    stddev.result(); //1.66 (1.660720583705416)
+
+##Exponential Smoothing
+
+Calculated using: http://en.wikipedia.org/wiki/Exponential_smoothing
+
+##Weighted Accumulators
+
+##Atomic Accumulators
