@@ -1,0 +1,6 @@
+*.iml
+.idea/*
+*.swp
+target/*
+development.yml
+accumulators-core/target/*
