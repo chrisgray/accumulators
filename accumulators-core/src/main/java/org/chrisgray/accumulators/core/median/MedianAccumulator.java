@@ -1,5 +1,6 @@
 package org.chrisgray.accumulators.core.median;
 
+import com.google.common.base.Optional;
 import org.chrisgray.accumulators.core.mean.MeanAccumulator;
 
 import java.util.ArrayList;
@@ -13,6 +14,12 @@ public class MedianAccumulator<E extends Number & Comparable<E>> {
     public void accumulate(E value) {
         list.add(value);
         dirty = true;
+    }
+
+    public void accumulate(Optional<E> value) {
+        if (value.isPresent()) {
+            accumulate(value.get());
+        }
     }
 
     public double result() {
