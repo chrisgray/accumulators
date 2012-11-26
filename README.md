@@ -72,4 +72,22 @@ Calculated using: http://en.wikipedia.org/wiki/Exponential_smoothing
 
 ##Weighted Accumulators
 
+For certain accumulators: mean and exponential smoothing allow for weights to be applied with their values. This can be used as:
+
+    DoubleWeightedAccumulator mean = new DoubleMeanAccumulator();
+    max.accumulate(1L, 1L);
+    max.accumulate(2l, 1L);
+    max.accumulate(3l, 1L);
+    max.accumulate(4l, 1000000L);
+    max.accumulate(5l, 1L);
+    max.result(); //very close to 4, because 4 is heavily weighted.
+
 ##Atomic Accumulators
+
+Aim to use atomic wrappers in java.util.concurrent.atomic or more coarse-grain synchronization blocks in more complicated scenarios.
+Besides their implementation they should be drop-in replacements.
+
+    LongAccumulator max = new AtomicLongMaxAccumulator();
+    max.accumulate(5L);
+    max.accumulate(6L);
+    max.result(); //6L
