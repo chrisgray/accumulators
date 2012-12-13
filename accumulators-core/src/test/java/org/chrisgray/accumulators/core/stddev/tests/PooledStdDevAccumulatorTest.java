@@ -2,7 +2,7 @@ package org.chrisgray.accumulators.core.stddev.tests;
 
 import com.google.common.collect.ImmutableList;
 import org.chrisgray.accumulators.core.DoubleWeightedAccumulator;
-import org.chrisgray.accumulators.core.stddev.StdDevAccumulator;
+import org.chrisgray.accumulators.core.stddev.PooledStdDevAccumulator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,12 +13,12 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-public class StdDevAccumulatorTest {
+public class PooledStdDevAccumulatorTest {
     protected DoubleWeightedAccumulator accumulator;
 
     @Before
     public void setup() {
-        accumulator = new StdDevAccumulator();
+        accumulator = new PooledStdDevAccumulator();
     }
 
     @After

@@ -5,7 +5,7 @@ import org.chrisgray.accumulators.core.DoubleWeightedAccumulator;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class AtomicStdDevAccumulator extends DoubleWeightedAccumulator {
+public class AtomicPooledStdDevAccumulator extends DoubleWeightedAccumulator {
     private AtomicDouble pooledStdDev = new AtomicDouble();
     private AtomicInteger k = new AtomicInteger();
     private AtomicDouble n = new AtomicDouble();

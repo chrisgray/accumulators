@@ -2,7 +2,7 @@ package org.chrisgray.accumulators.core.stddev;
 
 import org.chrisgray.accumulators.core.DoubleWeightedAccumulator;
 
-public class StdDevAccumulator extends DoubleWeightedAccumulator {
+public class PooledStdDevAccumulator extends DoubleWeightedAccumulator {
     private double pooledStdDev = 0;
     private int k = 0;
     private double n = 0;
